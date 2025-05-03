@@ -1,15 +1,15 @@
 import express from 'express';
+import {  serverConfig } from './config';
+import { pingHandler } from './controllers/ping.controller';
+import pingRouter from './routers/ping.router';
 
 const app = express();
 
-const PORT : number = 3000;
 
-app.get('/ping', (req, res) => {
-    res.send('Pong'); 
-    
-} );
+//registering all the routers and therir corrosponding routes without out app server objects
+app.use(pingRouter);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-    console.log(`Press ctrl+C to stop the server`);
+app.listen(serverConfig.PORT, () => {
+    console.log(`Server is running on http://localhost:${serverConfig.PORT}`);
+    console.log(`Press ctrl+C to stop the server`);    
 });
