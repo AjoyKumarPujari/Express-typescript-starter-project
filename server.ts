@@ -11,8 +11,8 @@ const app = express();
 //registering all the routers and therir corrosponding routes without out app server objects
 //app.use(pingRouter);//applicable to all the request
 
-app.use('/ping/v1', v1Router);
-app.use('/ping/v2', v2Router);
+app.use('/api/v1', v1Router);
+app.use('/api/v2', v2Router);
 
 
 app.listen(serverConfig.PORT, () => {
