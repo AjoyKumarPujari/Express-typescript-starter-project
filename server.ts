@@ -1,13 +1,19 @@
 import express from 'express';
 import {  serverConfig } from './config';
 import { pingHandler } from './controllers/ping.controller';
-import pingRouter from './routers/ping.router';
+import pingRouter from './routers/v1/ping.router';
+import v1Router from './routers/v1/index.router';
+import v2Router from './routers/v2/index.router';
 
 const app = express();
 
 
 //registering all the routers and therir corrosponding routes without out app server objects
-app.use(pingRouter);
+//app.use(pingRouter);//applicable to all the request
+
+app.use('/ping/v1', v1Router);
+app.use('/ping/v2', v2Router);
+
 
 app.listen(serverConfig.PORT, () => {
     console.log(`Server is running on http://localhost:${serverConfig.PORT}`);
