@@ -7,6 +7,9 @@ import v2Router from './routers/v2/index.router';
 
 const app = express();
 
+app.use(express.json());
+app.use(express.text());
+
 
 //registering all the routers and therir corrosponding routes without out app server objects
 //app.use(pingRouter);//applicable to all the request
